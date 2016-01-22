@@ -1,0 +1,81 @@
+*, *:before, *:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+}
+
+body{
+	min-height: 100%;
+}
+
+.blocitoff-container{
+	margin: 2rem auto;
+	width: 45%;
+	border: 1px solid black;
+}
+
+.nav-links {
+	display: flex;
+	justify-content: flex-end;
+	margin: 0px;
+}
+
+.nav-links .nav-link{
+	margin-left: 1rem;
+	padding: 10px;
+	list-style-type: none;
+}
+
+.nav-links .nav-link a{
+	text-decoration: none;
+}
+
+.nav-links .nav-link a:hover{
+	text-decoration: underline;
+}
+
+.current-view{
+	background-color: darkgray;
+	margin: 0px;
+	padding: 10px;
+}
+
+.task-list{
+	min-height: 400px;
+}
+
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+/* Medium and Large screens (640px) */
+@media (min-width: 40rem) {
+	html { font-size: 112%; }
+
+	.column {
+	    float: left;
+	    padding-left: 1rem;
+	    padding-right: 1rem;
+	}
+	.column.full { width: 100%; }
+	.column.two-thirds { width: 66.7%; }
+	.column.half { width: 50%; }
+	.column.third { width: 33.3%; }
+	.column.fourth { width: 25%; }
+	.column.flow-opposite { float: right; }
+}
+
+/* Large screens (1024px) */
+@media (min-width: 64rem) {
+	html { font-size: 120%; }
+}

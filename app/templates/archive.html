@@ -2,6 +2,9 @@
 <div class="task-list">
 	<div class="task-item archived" ng-repeat="task in tasks track by $index" ng-mouseover="show=true" ng-mouseleave="show=false" ng-show="task.status !== 'active' ">
 		<p>{{task.name}}</p>
-		<span class="ion-close-round task-actions" ng-show="show" ng-click="deleteTask($index)"></span>
+		<span class="ion-archive task-actions" ng-show="show" ng-click="deleteTask($index)"></span>
 	</div>
+</div>
+<div class="footer-nav">
+	<a ui-sref="active">See Active Tasks</a>
 </div>

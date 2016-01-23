@@ -6,7 +6,7 @@
 		$scope.tasks = $firebaseArray(ref);
 		
 		$scope.addTask = function(e){
-			if(e.keyCode === 13 && $scope.newTask && $scope.newTaskPriority){
+			if($scope.newTask && $scope.newTaskPriority){
 				var newTaskName = $scope.newTask;
 				var newTaskPriority = $scope.newTaskPriority;
 				

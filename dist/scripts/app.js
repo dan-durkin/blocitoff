@@ -1,4 +1,4 @@
-(function(){
+(function(){	
 	function config ($locationProvider, $stateProvider){
 		$locationProvider
 			.html5Mode({
@@ -7,11 +7,16 @@
 		});
 
         $stateProvider
-            .state('landing', {
+            .state('active', {
                 url: '/',
-                controller: 'LandingCtrl as landing',
-                templateUrl: '/templates/landing.html'
-            });
+                controller: 'ActiveTaskCtrl as active',
+                templateUrl: '/templates/active.html'
+            })
+			.state('archive',{
+				url: '/archive',
+				controller: 'ArchiveCtrl as archive',
+				templateUrl: 'templates/archive.html'
+			});
 	}
 	
 	angular

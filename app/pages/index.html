@@ -7,19 +7,11 @@
 	</head>
 	<body>
 		<div class="blocitoff-container">
-			<nav class="nav">
-				<div class="nav-links-container">
-					<ul class="nav-links">
-						<li class="nav-link"><a href="#">Task History</a></li>
-						<li class="nav-link"><a href="#">Active Tasks</a></li>
-					</ul>
-				</div>
-			</nav>
-			<div class="view-container">
-				<h2 class="current-view">Current tasks</h2>
-				<div class="task-list">
-					<ui-view></ui-view>
-				</div>
+			<h1 class="app-title">Blocitoff</h1>
+			<ui-view></ui-view>
+			<div class="footer-nav">
+				<a ui-sref="archive">See Task Archive</a>
+				<a ui-sref="active">See Active Tasks</a>
 			</div>
 		</div>
 	</body>
@@ -28,5 +20,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.min.js"></script>
 	<script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
 	<script src="/scripts/app.js"></script>
-	<script src="/scripts/controllers/LandingCtrl.js"></script>
+	<script src="/scripts/controllers/ActiveTaskCtrl.js"></script>
+	<script src="/scripts/controllers/ArchiveCtrl.js"></script>
 </html>

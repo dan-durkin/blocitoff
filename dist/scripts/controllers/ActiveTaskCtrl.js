@@ -1,11 +1,36 @@
 (function(){
-	function ActiveTaskCtrl (){
+	function ActiveTaskCtrl ($scope, $firebaseArray){
 		this.title = "Current Tasks";
 		
-		this.activeTasks = [
-			{name: "Take out trash", priority: "high", status: "active"},
-			{name: "Shovel Snow", priority: "med", status: "active"}
-		];
+		var ref = new Firebase("https://bloccitoff.firebaseio.com/data");
+		$scope.tasks = $firebaseArray(ref);
+		
+		$scope.addTask = function(e){
+			if(e.keyCode === 13 && $scope.newTask && $scope.newTaskPriority){
+				var newTaskName = $scope.newTask;
+				var newTaskPriority = $scope.newTaskPriority;
+				
+				$scope.tasks.$add({
+					name: newTaskName,
+					priority: newTaskPriority,
+					status: "active"
+				});
+				
+				$scope.newTask = "";
+				$scope.newTaskPriority = "";
+			}
+		};
+		
+		$scope.deleteTask = function (index){
+			console.log(index);
+			$scope.tasks.$remove(index);
+		};
+		
+		$scope.completeTask = function (index){
+			var task = $scope.tasks[index];
+			task.status = "completed";
+			$scope.tasks.$save(index);
+		};
 	}
 	
 	angular

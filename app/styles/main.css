@@ -43,6 +43,34 @@ h2.task-view-title{
 	margin: 0px;
 	width: 100%;
 	height: 100%;
+	display: inline;
+}
+
+.archived p{
+	text-decoration: line-through;
+}
+
+.task-actions{
+	float: right;
+	margin-left: 10px; 
+}
+
+.add-task-item{
+	height: 50px;
+	padding: 0px;
+	margin: 0px;
+}
+
+#taskInput{
+	width: 60%;
+}
+
+#taskPriorityInput{
+	width: 20%;
+}
+
+#addTaskButton{
+	width: 15%;
 }
 
 .footer-nav{

@@ -1,11 +1,13 @@
 (function(){
-	function ArchiveCtrl () {
+	function ArchiveCtrl ($scope, $firebaseArray) {
 		this.title = "Archived Tasks";
+		var ref = new Firebase("https://bloccitoff.firebaseio.com/data");
+		$scope.tasks = $firebaseArray(ref);
 		
-		this.archivedTasks = [
-			{name: "Wash Dishes", priority: "high", status: "expired"},
-			{name: "Clean room", priority: "low", status: "completed"}
-		];
+		$scope.deleteTask = function (index){
+			console.log(index);
+			$scope.tasks.$remove(index);
+		};
 	}
 	
 	angular

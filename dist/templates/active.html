@@ -1,4 +1,13 @@
 <h2 class="task-view-title">{{active.title}}</h2>
 <div class="task-list">
-	<div class="task-item" ng-repeat="task in active.activeTasks"><p>{{task.name}}</p></div>
+	<div class="task-item" ng-repeat="task in tasks track by $index" ng-mouseover="show=true" ng-mouseleave="show=false" ng-show="task.status==='active'">
+		<p>{{task.name}}</p>
+		<span class="ion-close-round task-actions" ng-show="show" ng-click="deleteTask($index)"></span>
+		<span class="ion-checkmark-round task-actions" ng-show="show" ng-click="completeTask($index)"></span>
+	</div>
+	<div class="add-task-item">
+		<input ng-model="newTask" type="text" id="taskInput"  placeholder="Add a new task...">
+		<input ng-model="newTaskPriority" type="text" id="taskPriorityInput"  placeholder="high, med, low">
+		<button ng-click=addTask($event) ng-keydown="addTask($event)" id="addTaskButton">Add Task</button>
+	</div>
 </div>

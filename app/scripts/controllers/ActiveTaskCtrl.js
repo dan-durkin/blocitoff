@@ -22,7 +22,6 @@
 		};
 		
 		$scope.deleteTask = function (index){
-			console.log(index);
 			$scope.tasks.$remove(index);
 		};
 		

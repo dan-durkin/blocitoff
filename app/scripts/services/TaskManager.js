@@ -1,23 +1,18 @@
 (function () {
-	function TaskManager($firebaseArray){
+	function TaskManager($firebaseArray, $interval){
 		var TaskManager = {};
 		var ref = new Firebase("https://bloccitoff.firebaseio.com/data");
 		
-		TaskManager.tasks = $firebaseArray(ref);
+		var tasks = TaskManager.tasks = $firebaseArray(ref);
 		
 		TaskManager.addTask = function(newTaskInput, newTaskPriorityInput){
-			if(newTask && newTaskPriority){
-				var newTaskName = newTaskInput;
-				var newTaskPriority = newTaskPriorityInput;
-				
+			if(newTaskInput && newTaskPriorityInput){
 				tasks.$add({
-					name: newTaskName,
-					priority: newTaskPriority,
-					status: "active"
+					name: newTaskInput,
+					priority: parseInt(newTaskPriorityInput),
+					status: "active",
+					timeCreated: Firebase.ServerValue.TIMESTAMP
 				});
-				
-				newTask = "";
-				newTaskPriority = "";
 			}
 		};
 		
@@ -31,10 +26,26 @@
 			tasks.$save(index);
 		};
 		
+		var interval = $interval(function () {
+			var now = new Date(),
+				expired = 1000 * 60 * 60 * 24 * 7;
+			
+			for (var i = 0; i < tasks.length; i++) {
+				var timeSinceCreated = tasks[i].timeCreated - now;
+				
+				if(timeSinceCreated > expired){
+					tasks[i].status = "expired";
+					tasks.$save(i);
+				}
+			}
+		}, 10000);
+		
+		TaskManager.interval = interval;
+		
 		return TaskManager;
 	}
 	
 	angular
 		.module('blocitoff')
-		.factory('TaskManager', ['$firebaseArray', TaskManager]);
+		.factory('TaskManager', ['$firebaseArray', '$interval', TaskManager]);
 })();

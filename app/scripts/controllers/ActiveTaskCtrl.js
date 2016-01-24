@@ -1,38 +1,19 @@
 (function(){
-	function ActiveTaskCtrl ($scope, $firebaseArray){
+	function ActiveTaskCtrl ($scope, TaskManager){
 		this.title = "Current Tasks";	
-		
-		var ref = new Firebase("https://bloccitoff.firebaseio.com/data");
-		$scope.tasks = $firebaseArray(ref);
+		$scope.tasks = TaskManager.tasks;
 		
 		$scope.addTask = function(e){
-			if($scope.newTask && $scope.newTaskPriority){
-				var newTaskName = $scope.newTask;
-				var newTaskPriority = $scope.newTaskPriority;
-				
-				$scope.tasks.$add({
-					name: newTaskName,
-					priority: newTaskPriority,
-					status: "active"
-				});
-				
-				$scope.newTask = "";
-				$scope.newTaskPriority = "";
-			}
+			TaskManager.addTask($scope.newTaskInput, $scope.newTaskPriorityInput);
+			$scope.newTaskInput = "";
+			$scope.newTaskPriorityInput = "";
 		};
 		
-		$scope.deleteTask = function (index){
-			$scope.tasks.$remove(index);
-		};
-		
-		$scope.completeTask = function (index){
-			var task = $scope.tasks[index];
-			task.status = "completed";
-			$scope.tasks.$save(index);
-		};
+		$scope.deleteTask = TaskManager.deleteTask;
+		$scope.completeTask = TaskManager.completeTask;
 	}
 	
 	angular
 		.module('blocitoff')
-		.controller('ActiveTaskCtrl', ActiveTaskCtrl);
+		.controller('ActiveTaskCtrl', ['$scope', 'TaskManager',ActiveTaskCtrl]);
 })();

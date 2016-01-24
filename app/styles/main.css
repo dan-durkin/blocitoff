@@ -10,13 +10,14 @@ html {
 
 body{
 	min-height: 100%;
+	font-size: 1.25rem;
 	font-family: 'Oswald', sans-serif;
 	color: #fff;
 }
 
 .blocitoff-container{
 	margin: 2rem auto;
-	width: 45%;
+	width: 65%;
 	border: 0.75rem solid #05668D;
 	border-radius: 0.75rem;
 }
@@ -47,10 +48,10 @@ h1.app-title{
 	background-color: #00A896;
 }
 
-.task-item completed{
-	background-color: #02C39A;
+.task-item.completed{
+	background-color: #CCC;
 }
-.task-item expired{
+.task-item.expired{
 	background-color: #777777;
 }
 
@@ -78,6 +79,7 @@ h1.app-title{
 }
 
 input,
+select,
 button{
 	height: 3rem;
 	display: inline-block;
@@ -90,6 +92,9 @@ button{
 
 #taskPriorityInput{
 	width: 25%;
+	-webkit-appearance:none;
+	background-color: #fff;
+	border-radius: 0rem;
 }
 
 #addTaskButton{
@@ -123,16 +128,10 @@ button{
 
 /* Small and Medium screens (<=640px) */
 @media (max-width: 40rem) {
-	html { font-size: 112%; }
-	.blocitoff-container{
-		width: 95%;
-	}
-}
-
-/* Large screens (>=1024px) */
-@media (min-width: 64rem) {
 	html { font-size: 120%; }
 	.blocitoff-container{
-		width: 55%;
+		margin: 0rem auto;
+		padding: 0rem;
+		width: 95%;
 	}
 }

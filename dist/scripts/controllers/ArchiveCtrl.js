@@ -1,15 +1,29 @@
 (function(){
-	function ArchiveCtrl ($scope, $firebaseArray) {
+	function ArchiveCtrl ($scope, TaskManager) {
 		this.title = "Archived Tasks";
-		var ref = new Firebase("https://bloccitoff.firebaseio.com/data");
-		$scope.tasks = $firebaseArray(ref);
-		
-		$scope.deleteTask = function (index){
-			$scope.tasks.$remove(index);
-		};
+		$scope.tasks = TaskManager.tasks;
+		$scope.deleteTask = TaskManager.deleteTask;
 	}
 	
 	angular
 		.module('blocitoff')
-		.controller('ArchiveCtrl', ArchiveCtrl)
+		.controller('ArchiveCtrl', ['$scope', 'TaskManager', ArchiveCtrl])
 })();
+
+
+/*
+
+	//Service
+	var registeredScopes = [];
+	SongPlayer.register = function (scope) {
+		regusteredScopes.push(scope);
+	};
+	
+	for (...) {
+		registeredScopes[i].apply(function () {
+		
+		})
+	}
+	
+
+*/

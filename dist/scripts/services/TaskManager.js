@@ -1,32 +1,34 @@
 (function () {
-	function TaskManager($scope, $firebaseArray){
+	function TaskManager($firebaseArray){
+		var TaskManager = {};
 		var ref = new Firebase("https://bloccitoff.firebaseio.com/data");
+		
 		TaskManager.tasks = $firebaseArray(ref);
 		
-		TaskManager.addTask = function(e){
-			if($scope.newTask && $scope.newTaskPriority){
-				var newTaskName = $scope.newTask;
-				var newTaskPriority = $scope.newTaskPriority;
+		TaskManager.addTask = function(newTaskInput, newTaskPriorityInput){
+			if(newTask && newTaskPriority){
+				var newTaskName = newTaskInput;
+				var newTaskPriority = newTaskPriorityInput;
 				
-				$scope.tasks.$add({
+				tasks.$add({
 					name: newTaskName,
 					priority: newTaskPriority,
 					status: "active"
 				});
 				
-				$scope.newTask = "";
-				$scope.newTaskPriority = "";
+				newTask = "";
+				newTaskPriority = "";
 			}
 		};
 		
 		TaskManager.deleteTask = function (index){
-			$scope.tasks.$remove(index);
+			tasks.$remove(index);
 		};
 		
 		TaskManager.completeTask = function (index){
-			var task = $scope.tasks[index];
+			var task = tasks[index];
 			task.status = "completed";
-			$scope.tasks.$save(index);
+			tasks.$save(index);
 		};
 		
 		return TaskManager;
@@ -34,5 +36,5 @@
 	
 	angular
 		.module('blocitoff')
-		.factory('TaskManager', ['$scope', '$firebaseArray', TaskManager]);
+		.factory('TaskManager', ['$firebaseArray', TaskManager]);
 })();

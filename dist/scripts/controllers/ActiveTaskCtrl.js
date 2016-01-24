@@ -1,7 +1,7 @@
 (function(){
 	function ActiveTaskCtrl ($scope, $firebaseArray){
 		this.title = "Current Tasks";	
-
+		
 		var ref = new Firebase("https://bloccitoff.firebaseio.com/data");
 		$scope.tasks = $firebaseArray(ref);
 		

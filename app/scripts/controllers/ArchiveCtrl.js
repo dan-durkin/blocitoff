@@ -9,21 +9,3 @@
 		.module('blocitoff')
 		.controller('ArchiveCtrl', ['$scope', 'TaskManager', ArchiveCtrl])
 })();
-
-
-/*
-
-	//Service
-	var registeredScopes = [];
-	SongPlayer.register = function (scope) {
-		regusteredScopes.push(scope);
-	};
-	
-	for (...) {
-		registeredScopes[i].apply(function () {
-		
-		})
-	}
-	
-
-*/

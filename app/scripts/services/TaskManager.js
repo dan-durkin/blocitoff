@@ -18,7 +18,6 @@
 		
 		TaskManager.deleteTask = function (index){
 			tasks.$remove(index);
-			tasks.$save(index);
 		};
 		
 		TaskManager.completeTask = function (index){
@@ -27,6 +26,7 @@
 			tasks.$save(index);
 		};
 		
+		/*
 		var interval = $interval(function () {
 			var now = new Date(),
 				expired = 1000 * 60 * 60 * 24 * 7;
@@ -42,6 +42,8 @@
 		}, 10000);
 		
 		TaskManager.interval = interval;
+		
+		*/
 		
 		return TaskManager;
 	}

@@ -1,6 +1,6 @@
 <h2 class="task-view-title">{{archive.title}}</h2>
 <div class="task-list">
-	<div class="task-item archived" ng-repeat="task in tasks track by $index" ng-mouseover="show=true" ng-mouseleave="show=false" ng-show="task.status !== 'active'" ng-class="{'expired': task.status === 'expired', 'completed': task.status === 'completed'}">
+	<div class="task-item archived" ng-repeat="task in tasks | orderBy: 'status' track by $index" ng-mouseover="show=true" ng-mouseleave="show=false" ng-show="task.status !== 'active'" ng-class="{'expired': task.status === 'expired', 'completed': task.status === 'completed'}">
 		<p>{{task.name}}</p>
 		<span class="ion-archive task-actions" ng-show="show" ng-click="deleteTask($index)"></span>
 	</div>

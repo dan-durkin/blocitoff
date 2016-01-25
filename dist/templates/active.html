@@ -1,12 +1,12 @@
 <h2 class="task-view-title">{{active.title}}</h2>
-<div class="task-list" ng-mouseenter="add=true" ng-mouseleave="add=false" >
+<div class="task-list">
 	<div class="task-item" ng-repeat="task in tasks | orderBy: '-priority' track by $index" ng-mouseover="show=true" ng-mouseleave="show=false" ng-show="task.status==='active'">
 		<span class="ion-alert-circled task-priority-indication" ng-show="task.priority === 3"></span>
 		<p>{{task.name}}</p>
 		<span class="ion-close-round task-actions" ng-show="show" ng-click="deleteTask($index)"></span>
 		<span class="ion-checkmark-round task-actions" ng-show="show" ng-click="completeTask($index)"></span>
 	</div>
-	<div class="add-task-item" >
+	<div class="add-task-item">
 		<input ng-model="newTaskInput" type="text" id="taskInput"  placeholder="Add a new task...">
 		<select ng-model="newTaskPriorityInput" id="taskPriorityInput">
 			<option value="" disabled selected>Priority</option>
@@ -15,7 +15,7 @@
 			<option value="1">Low</option>
 			<span class="ion-chevron-down"></span>
 		</select>
-		<button ng-click="addTask($event)" ng-keydown="addTask($event)" id="addTaskButton"><p>Add Task</p></button>
+		<button ng-click="addTask($event)" ng-keydown="addTask($event)" id="addTaskButton"><p>{{'Add Task'| uppercase}}</p></button>
 	</div>
 </div>
 <div class="footer-nav">

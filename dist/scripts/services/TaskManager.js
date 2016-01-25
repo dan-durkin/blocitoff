@@ -18,6 +18,7 @@
 		
 		TaskManager.deleteTask = function (index){
 			tasks.$remove(index);
+			tasks.$save(index);
 		};
 		
 		TaskManager.completeTask = function (index){

@@ -31,7 +31,7 @@
 				expired = 1000 * 60 * 60 * 24 * 7;
 			
 			for (var i = 0; i < tasks.length; i++) {
-				var timeSinceCreated = now - tasks[i].timeCreated;  
+				var timeSinceCreated = now - tasks[i].timeCreated; 
 				if(tasks[i].status === 'active' && timeSinceCreated > expired){
 					tasks[i].status = "expired";
 					tasks.$save(i);

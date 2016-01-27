@@ -26,28 +26,13 @@
 			tasks.$save(index);
 		};
 		
-		/*
-		
-		TaskManager.isExpired() = function (index){
-			var now = new Date(),
-				expired = 1000 * 60 * 60 * 24 * 7;
-			
-			if(now - tasks[index].timeCreated > expired){
-				tasks[index].status = "expired";
-				tasks.$save(index);
-			}
-		}
-		
-		*/
-		
-		/*
 		var interval = $interval(function () {
 			var now = new Date(),
 				expired = 1000 * 60 * 60 * 24 * 7;
 			
 			for (var i = 0; i < tasks.length; i++) {
-				var timeSinceCreated = now - tasks[i].timeCreated;
-				if(timeSinceCreated > expired){
+				var timeSinceCreated = now - tasks[i].timeCreated;  
+				if(tasks[i].status === 'active' && timeSinceCreated > expired){
 					tasks[i].status = "expired";
 					tasks.$save(i);
 				}
@@ -55,8 +40,6 @@
 		}, 60000);
 		
 		TaskManager.interval = interval;
-		
-		*/
 		
 		return TaskManager;
 	}

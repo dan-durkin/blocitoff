@@ -2,8 +2,9 @@
 	function TaskManager($firebaseArray, $interval){
 		var TaskManager = {};
 		var ref = new Firebase("https://bloccitoff.firebaseio.com/data");
-		
 		var tasks = TaskManager.tasks = $firebaseArray(ref);
+		
+		TaskManager.ref = ref;
 		
 		TaskManager.addTask = function(newTaskInput, newTaskPriorityInput){
 			if(newTaskInput && newTaskPriorityInput){
@@ -40,7 +41,7 @@
 		}, 60000);
 		
 		TaskManager.interval = interval;
-		
+			
 		return TaskManager;
 	}
 	

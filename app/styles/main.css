@@ -121,10 +121,14 @@ button{
 }
 
 .footer-nav a{
-	font-size: 0.75rem;
+	font-size: 1rem;
 	color: #FFF;
 	text-decoration: none;
 	cursor: pointer;
+}
+
+.login{
+	float: right;
 }
 
 .clearfix:before,

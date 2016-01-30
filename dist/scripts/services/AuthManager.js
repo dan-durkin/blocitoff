@@ -34,6 +34,10 @@
 			ref.unauth();
 		};
 		
+		AuthManager.isLoggedOut = function (){
+			return ref.getAuth() ? true : false;
+		}
+		
 		return AuthManager;
 	}
 	

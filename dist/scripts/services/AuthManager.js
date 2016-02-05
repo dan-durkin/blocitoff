@@ -1,5 +1,5 @@
 (function (){
-	function AuthManager (TaskManager){
+	function AuthManager (TaskManager, $state){
 		var ref = TaskManager.ref;
 		
 		function authDataCallback(authData) {
@@ -18,23 +18,20 @@
 			}
 		}
 
-		AuthManager.login = function(){
-			ref.authWithOAuthPopup("google", function(error, authData) {
-				if (error) {
-					console.log("Login Failed!", error);
-				} else {
-					console.log("Authenticated successfully with payload:", authData);
-				}
-			});	
-			
-			ref.onAuth(authDataCallback);
+		AuthManager.loginGoogle = function(){
+			ref.authWithOAuthPopup("google", authHandler);
+			ref.onAuth(function (authData) {
+				authDataCallback(authData);
+				$state.go('active');
+			});
 		};
 		
 		AuthManager.logout  = function (){
 			ref.unauth();
+			$state.go('login');
 		};
 		
-		AuthManager.isLoggedOut = function (){
+		AuthManager.isLoggedIn = function (){
 			return ref.getAuth() ? true : false;
 		}
 		
@@ -43,5 +40,5 @@
 	
 	angular
 		.module('blocitoff')
-		.factory('AuthManager', ['TaskManager', AuthManager]);
+		.factory('AuthManager', ['TaskManager', '$state',  AuthManager]);
 })();

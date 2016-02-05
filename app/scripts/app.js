@@ -7,7 +7,11 @@
 			});
 
 		$stateProvider
-
+			.state('login', {
+				url: '/',
+				controller: 'LoginCtrl as login',
+				templateUrl: '/templates/login.html'
+			})
 			.state('active', {
 				url: '/',
 				controller: 'ActiveTaskCtrl as active',
@@ -17,11 +21,6 @@
 				url: '/',
 				controller: 'ArchiveCtrl as archive',
 				templateUrl: 'templates/archive.html'
-			})			
-			.state('login', {
-				url: '/',
-				controller: 'LoginCtrl as login',
-				templateUrl: '/templates/login.html'
 			});
 	}
 

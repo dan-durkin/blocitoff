@@ -1,7 +1,7 @@
 (function (){
 	function LoginCtrl ($scope, AuthManager){
-		this.title = "Login";
-		$scope.login = AuthManager.login;
+		this.title = "Login";		
+		$scope.logOnWithGoogle = AuthManager.loginGoogle;
 		$scope.isLoggedOut = AuthManager.isLoggedOut;
 	}
 	

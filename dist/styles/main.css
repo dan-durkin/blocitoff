@@ -127,7 +127,11 @@ button{
 	cursor: pointer;
 }
 
-.login{
+.googleLogOn{
+	padding: 0rem;
+}
+
+.logoff{
 	float: right;
 }
 

@@ -2,7 +2,6 @@
 	function LoginCtrl ($scope, AuthManager){
 		this.title = "Login";		
 		$scope.logOnWithGoogle = AuthManager.loginGoogle;
-		$scope.isLoggedOut = AuthManager.isLoggedOut;
 	}
 	
 	angular

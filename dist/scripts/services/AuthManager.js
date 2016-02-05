@@ -31,10 +31,6 @@
 			$state.go('login');
 		};
 		
-		AuthManager.isLoggedIn = function (){
-			return ref.getAuth() ? true : false;
-		}
-		
 		return AuthManager;
 	}
 	

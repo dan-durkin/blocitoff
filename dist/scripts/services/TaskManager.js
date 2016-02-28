@@ -1,7 +1,7 @@
 (function () {
 	function TaskManager($firebaseArray, $interval){
 		var TaskManager = {};
-		var ref = new Firebase("https://bloccitoff.firebaseio.com/data");
+		var ref = new Firebase("https://blocitoff23.firebaseio.com/data");
 		
 		var tasks = TaskManager.tasks = $firebaseArray(ref);
 		
@@ -31,7 +31,7 @@
 				expired = 1000 * 60 * 60 * 24 * 7;
 			
 			for (var i = 0; i < tasks.length; i++) {
-				var timeSinceCreated = now - tasks[i].timeCreated;  
+				var timeSinceCreated = now - tasks[i].timeCreated; 
 				if(tasks[i].status === 'active' && timeSinceCreated > expired){
 					tasks[i].status = "expired";
 					tasks.$save(i);

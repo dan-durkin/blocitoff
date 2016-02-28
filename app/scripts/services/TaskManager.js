@@ -1,7 +1,7 @@
 (function () {
 	function TaskManager($firebaseArray, $interval){
 		var TaskManager = {};
-		var ref = new Firebase("https://bloccitoff.firebaseio.com/data");
+		var ref = new Firebase("https://blocitoff23.firebaseio.com/data");
 		
 		var tasks = TaskManager.tasks = $firebaseArray(ref);
 		
